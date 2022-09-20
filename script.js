@@ -11,25 +11,11 @@
 const sendInput = document.querySelector('#input');
 const itemsList = document.querySelector('#items');
 
-sendInput.addEventListener('keydowm', function(event) {
     if (event.key == 'Enter') {
         const messageText = sendInput.value;
+        sendInput.value = '';
+        newMessage.addEventListener('click', function() {
+            newMessage.classList.toggle('done');
+        })
     };
-    const newMessage = document.createElement('div');
-    newMessage.classList.add('message');
-    newMessage.textContent = messageText;
-
-    if (messageText != '') {
-        itemsList.prepend(newMessage);
-    };
-    sendInput.value = '';
 });
-
-const items = document.querySelectorAll('.message');
-
-for (let item of items) {
-    item.addEventListener('click', function() {
-        item.classList.toggle('done');
-    })
-}
-console.log(newMessage);
